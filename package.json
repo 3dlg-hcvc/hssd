@@ -1,8 +1,8 @@
 {
-  "name": "multiscan_challenge",
+  "name": "hssd-200",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gitname.github.io/multiscan_challenge",
+  "homepage": "https://gitname.github.io/hssd-200",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
