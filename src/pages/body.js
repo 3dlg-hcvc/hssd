@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
+import AspectRatio from '@mui/joy/AspectRatio';
 
 import teaser from '../static/teaser.png';
 import georgia_logo from '../static/georgia-tech-logo.svg';
@@ -50,7 +51,7 @@ function LogoBox(props) {
             sx={{
                 m: 2,
                 display: 'flex',
-                height: 60,
+                height: {xs: 30, sm: 60},
                 justifyContent: 'center',
                 ...sx,
             }}
@@ -77,16 +78,17 @@ export default function Body(props) {
         <Box sx={{ display: 'flex', justifyContent: 'center' }} >
             <Box component="main"
                 sx={{
-                    width: '75%',
+                    width: {xs: '90%', sm:'70%'},
                     mt: 4,
                     mb: 4,
+                    mx: 5,
                 }}
             >
                 <Toolbar />
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
                     }}
                 >
                     <div>
@@ -101,15 +103,14 @@ export default function Body(props) {
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
                     }}
                 >
                     <Box
                         component="img"
                         sx={{
                             display: 'flex',
-                            width: 1200,
-                            maxWidth: { xs: 5, sm: 5, md: 1000, lg: 1200 },
+                            maxWidth: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
                             justifyContent: 'center',
                             my: 5
                         }}
@@ -117,8 +118,8 @@ export default function Body(props) {
                         src={teaser}
                     />
                 </Box>
-                <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(3, 1fr)' }}>
-                    <Typography component="div" variant="h6" align="left" sx={{ display: 'flex', justifyContent: 'center' }} >
+                <Box sx={{ display: 'grid', justifyContent: 'center'}}>
+                    <Typography variant="h6" align="left" >
                         We contribute the Habitat Synthetic Scenes Dataset
                         (HSSD-200), a dataset of 211 high-quality 3D scenes, and
                         use it to test navigation agent generalization to realistic 3D
@@ -169,7 +170,7 @@ export default function Body(props) {
                             sx={{
                                 m: 2,
                                 display: 'flex',
-                                height: 30,
+                                height: {xs: 15, sm: 30},
                                 justifyContent: 'center'
                             }}
                             alt="meta_logo"

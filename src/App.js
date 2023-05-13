@@ -17,7 +17,7 @@ let theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <CssBaseline />
         <Header/>
         <Body/>
