@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
-import AspectRatio from '@mui/joy/AspectRatio';
 
 import teaser from '../static/teaser.png';
 import georgia_logo from '../static/georgia-tech-logo.svg';
@@ -49,9 +48,10 @@ function LogoBox(props) {
     return (
         <Box
             sx={{
-                m: 2,
+                my: 2,
+                mx: '5%',
                 display: 'flex',
-                height: {xs: 30, sm: 60},
+                height: {xs: 30, sm: 40, lg: 60},
                 justifyContent: 'center',
                 ...sx,
             }}
@@ -78,10 +78,10 @@ export default function Body(props) {
         <Box sx={{ display: 'flex', justifyContent: 'center' }} >
             <Box component="main"
                 sx={{
-                    width: {xs: '90%', sm:'70%'},
+                    width: {xs: '90%', sm:'90%', md: '80%', lg: '70%'},
                     mt: 4,
                     mb: 4,
-                    mx: 5,
+                    mx: {xs: 1, sm: 2, md: 3, lg: 4},
                 }}
             >
                 <Toolbar />
@@ -104,13 +104,14 @@ export default function Body(props) {
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',
+                        width: '100%',
                     }}
                 >
                     <Box
                         component="img"
                         sx={{
                             display: 'flex',
-                            maxWidth: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+                            width: '100%',
                             justifyContent: 'center',
                             my: 5
                         }}
@@ -119,7 +120,7 @@ export default function Body(props) {
                     />
                 </Box>
                 <Box sx={{ display: 'grid', justifyContent: 'center'}}>
-                    <Typography variant="h6" align="left" >
+                    <Typography align="left" sx={{ typography: {xs: 'body', md: 'body', 'lg': 'h6'} }}>
                         We contribute the Habitat Synthetic Scenes Dataset
                         (HSSD-200), a dataset of 211 high-quality 3D scenes, and
                         use it to test navigation agent generalization to realistic 3D
@@ -168,10 +169,7 @@ export default function Body(props) {
                         <LogoBox
                             component="img"
                             sx={{
-                                m: 2,
-                                display: 'flex',
-                                height: {xs: 15, sm: 30},
-                                justifyContent: 'center'
+                                height: {xs: 15, sm: 20, lg: 30},
                             }}
                             alt="meta_logo"
                             src={meta_logo}
