@@ -1,8 +1,8 @@
 {
-  "name": "hssd-200",
+  "name": "hssd",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gitname.github.io/hssd-200",
+  "homepage": "https://gitname.github.io/hssd",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
