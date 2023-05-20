@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hssd/static/css/main.e6c13ad2.css",
-    "main.js": "/hssd/static/js/main.69517b9b.js",
+    "main.js": "/hssd/static/js/main.0bdfaea3.js",
     "static/js/787.2f20b4a2.chunk.js": "/hssd/static/js/787.2f20b4a2.chunk.js",
     "static/media/teaser.png": "/hssd/static/media/teaser.3036a4eb2f3a254a79a3.png",
     "static/media/meta-logo.svg": "/hssd/static/media/meta-logo.9e11d24ac9a6e71ebbd5b9d5e2a5fd37.svg",
@@ -10,11 +10,11 @@
     "static/media/sfu-logo.svg": "/hssd/static/media/sfu-logo.171f37e7c4b2d1118bddcb79f7c363eb.svg",
     "index.html": "/hssd/index.html",
     "main.e6c13ad2.css.map": "/hssd/static/css/main.e6c13ad2.css.map",
-    "main.69517b9b.js.map": "/hssd/static/js/main.69517b9b.js.map",
+    "main.0bdfaea3.js.map": "/hssd/static/js/main.0bdfaea3.js.map",
     "787.2f20b4a2.chunk.js.map": "/hssd/static/js/787.2f20b4a2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.69517b9b.js"
+    "static/js/main.0bdfaea3.js"
   ]
 }
