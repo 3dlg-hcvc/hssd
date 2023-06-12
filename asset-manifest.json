@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hssd/static/css/main.4b25b621.css",
-    "main.js": "/hssd/static/js/main.783da86d.js",
+    "main.js": "/hssd/static/js/main.f7eb76e5.js",
     "static/js/787.2f20b4a2.chunk.js": "/hssd/static/js/787.2f20b4a2.chunk.js",
     "static/media/hssd-teaser.webm": "/hssd/static/media/hssd-teaser.31bcd3d567c178026bfb.webm",
     "static/media/dhruv.jpeg": "/hssd/static/media/dhruv.01a078745cb32114635e.jpeg",
@@ -22,11 +22,11 @@
     "static/media/sfu-logo.svg": "/hssd/static/media/sfu-logo.171f37e7c4b2d1118bddcb79f7c363eb.svg",
     "index.html": "/hssd/index.html",
     "main.4b25b621.css.map": "/hssd/static/css/main.4b25b621.css.map",
-    "main.783da86d.js.map": "/hssd/static/js/main.783da86d.js.map",
+    "main.f7eb76e5.js.map": "/hssd/static/js/main.f7eb76e5.js.map",
     "787.2f20b4a2.chunk.js.map": "/hssd/static/js/787.2f20b4a2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4b25b621.css",
-    "static/js/main.783da86d.js"
+    "static/js/main.f7eb76e5.js"
   ]
 }
