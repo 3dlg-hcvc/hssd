@@ -1,7 +1,7 @@
 # @package _global_
 defaults:
   - /habitat_baselines: habitat_baselines_rl_config_base
-  - /benchmark/nav/objectnav: hssd-200_objectnav_hssd
+  - /benchmark/nav/objectnav: hssd-200_objectnav_hm3d
   - _self_
 habitat:
   environment:
@@ -12,12 +12,12 @@ habitat:
     slack_reward: -1e-3
 habitat_baselines:
   torch_gpu_id: 0
-  tensorboard_dir: "data/training/objectnav/hssd/tb"
-  video_dir: "data/training/objectnav/hssd/video_dir"
+  tensorboard_dir: "data/training/objectnav/hm3d/tb"
+  video_dir: "data/training/objectnav/hm3d/video_dir"
   test_episode_count: -1
-  eval_ckpt_path_dir: "data/training/objectnav/hssd/checkpoints/"
+  eval_ckpt_path_dir: "data/training/objectnav/hm3d/checkpoints/"
   num_environments: 32
-  checkpoint_folder: "data/training/objectnav/hssd/checkpoints"
+  checkpoint_folder: "data/training/objectnav/hm3d/checkpoints"
   trainer_name: "ver"
   num_updates: 270000
   log_interval: 10
