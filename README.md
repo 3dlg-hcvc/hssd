@@ -3,15 +3,14 @@ HSSD: Habitat Synthetic Scene Dataset
 
 This repository serves as a guide for training and evaluating ObjectNav agents in HSSD, AI2THOR, and HM3D scene datasets using Habitat, and reproducing experiments provided in the following `HSSD-200` paper.
 
-
 `Habitat Synthetic Scenes Dataset (HSSD-200): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation`
+
+[hssd-teaser-small.webm](https://github.com/3dlg-hcvc/hssd/assets/24846546/1e773001-9f0c-4b8d-a508-ec68d2ff477b)
 
 ## About
 
 > We contribute the Habitat-Floorplanner Scenes Dataset, a dataset of 211 high-quality 3D scenes, and use it to test navigation agent generalization to realistic 3D environments. Our dataset represents real interiors and contains a diverse set of 18,656 models of real-world objects. We investigate the impact of synthetic 3D scene dataset scale and realism on the task of training embodied agents to find and navigate to objects (ObjectGoal navigation).
 
-<!-- <img src="https://i.imgur.com/XEkLxNs.png" width=50%> -->
-<video src="https://3dlg-hcvc.github.io/hssd/static/media/hssd-teaser.31bcd3d567c178026bfb.webm">
 
 ## Pre-requisites
 
