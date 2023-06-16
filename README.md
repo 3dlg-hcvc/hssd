@@ -16,20 +16,23 @@ This repository serves as a guide for training and evaluating ObjectNav agents i
 
 To load HSSD and other scene datasets in simulation and train and evlaute embodied agents in them, you will need to install:
 
-- [Habitat-sim](https://github.com/facebookresearch/habitat-sim#installation)
-- [Habitat-lab](https://github.com/facebookresearch/habitat-lab#installation)
+- [Habitat-lab (`v0.2.3_hssd` branch)](https://github.com/facebookresearch/habitat-lab/tree/v0.2.3_hssd)
+- [Habitat-sim (`v0.2.3_hssd` branch)](https://github.com/facebookresearch/habitat-sim/tree/v0.2.3_hssd): build from source.
+- [CLIP](https://github.com/openai/CLIP) (`pip install git+https://github.com/openai/CLIP.git@40f5484c1c74edd83cb9cf687c6ab92b28d8b656`)
+
+Note: Even though the HSSD scene dataset is compatible with the latest habitat-sim and habitat-lab versions, the results in the paper were reported using `v0.2.3_hssd` branch of both habitat libraries.
 
 ## Scene datasets
 
 ### HSSD:
 
-HSSD has been hosted on HuggingFace at [huggingface.co/hssd/hssd](https://huggingface.co/hssd/hssd). Here, you can preview the dataset and find information about the folder structure and instructions on getting started.
+HSSD has been hosted on HuggingFace at [huggingface.co/hssd/hssd-hab](https://huggingface.co/hssd/hssd-hab). Here, you can preview the dataset and find information about the folder structure and instructions on getting started.
 
 For conveniently running subsequent training and evaluation experiments, you can clone the dataset to the following path in your `habitat-lab` installation:
 
 ```
 cd /path/to/habitat-lab
-git clone https://huggingface.co/datasets/hssd/hssd data/scene_datasets/hssd
+git clone https://huggingface.co/datasets/hssd/hssd-hab data/scene_datasets/hssd-hab
 ```
 
 ### (Optional) ProcTHOR-HAB: 
@@ -53,7 +56,7 @@ To download episode datasets for HSSD, ProcTHOR-HAB, and HM3D-semantics, you wil
 
 | Task | Scenes | Link | Extract path | Config to use                                                                                                          | Archive size |
 | --- | --- | --- | --- |------------------------------------------------------------------------------------------------------------------------| --- |
-| [Object goal navigation](https://arxiv.org/abs/2006.13171) | HSSD | [objectnav_hssd_v0.2.3.zip](https://www.dropbox.com/s/26ribfiup5249b8/objectnav_hssd_v0.2.3.zip) | `data/datasets/objectnav/hssd_v0.2.3` | [`datasets/objectnav/hssd.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hssd.yaml)                                    | 206 MB |
+| [Object goal navigation](https://arxiv.org/abs/2006.13171) | HSSD-hab | [objectnav_hssd-hab_v0.2.3.zip](https://www.dropbox.com/s/26ribfiup5249b8/objectnav_hssd_v0.2.3.zip) | `data/datasets/objectnav/hssd-hab_v0.2.3` | [`datasets/objectnav/hssd-hab.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hssd-hab.yaml)                                    | 206 MB |
 | [Object goal navigation](https://arxiv.org/abs/2006.13171) | ProcTHOR-HAB | [objectnav_procthor-hab.zip](https://www.dropbox.com/s/mdfpevn1srr37cr/objectnav_procthor-hab.zip) | `data/datasets/objectnav/procthor-hab` | [`datasets/objectnav/procthor-hab.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/procthor-hab.yaml)                                    | 755 MB |
 | [Object goal navigation](https://arxiv.org/abs/2006.13171) | HM3DSem-v0.2 | [objectnav_hm3d_v2.zip](https://dl.fbaipublicfiles.com/habitat/data/datasets/objectnav/hm3d/v2/objectnav_hm3d_v2.zip) | `data/datasets/objectnav/hm3d/v2/` | [`datasets/objectnav/hm3d_v2.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hm3d_v2.yaml)                                    | 245 MB |
 
@@ -70,3 +73,28 @@ For your convenience, you can run the script below to conveniently move the nece
 python setup.py --hab-lab-path /path/to/habitat-lab
 ```
 
+## Commands
+
+Change directory to habitat-lab for successfuly running subsequent commands.
+
+```
+cd /path/to/habitat-lab
+```
+
+### Pre-train
+
+You can pre-train an ObjectNav agent on HSSD, ProcTHOR-hab, or HM3D, using any variant of the following command:
+
+```
+python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type train
+```
+
+### Evaluate
+
+You can evaluate trained models on val datasets as such:
+
+```
+python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
+```
+
+<!-- ## Citation -->
