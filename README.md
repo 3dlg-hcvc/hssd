@@ -89,7 +89,9 @@ You can pre-train an ObjectNav agent on HSSD, ProcTHOR-hab, or HM3D, using any v
 python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type train
 ```
 
-You can find more information about training runs through checkpoints and tensorboard logs saved here: `/path/to/habitat-lab/data/training/objectnav`
+You can find more information about training runs through checkpoints and tensorboard logs saved here: `/path/to/habitat-lab/data/training/objectnav`.
+
+Note: The above script will run training on 1 GPU. However, all the training experiments in the paper used 4 A40 GPUs and 16 CPU cores per GPU on a SLURM-based compute cluster. To schedule a similar training run, you can start with the sample batch script provided in the `scripts/slurm` directory of this repository – and modify it as per your requirement.
 
 ### Evaluate
 
