@@ -3,7 +3,7 @@ HSSD: Habitat Synthetic Scene Dataset
 
 This repository serves as a guide for training and evaluating ObjectNav agents in HSSD, AI2THOR, and HM3D scene datasets using Habitat, and reproducing experiments provided in the HSSD paper.
 
-`Habitat Synthetic Scenes Dataset (HSSD-200): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation`
+`Habitat Synthetic Scenes Dataset (HSSD): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation`
 
 [hssd-teaser-small.webm](https://github.com/3dlg-hcvc/hssd/assets/24846546/1e773001-9f0c-4b8d-a508-ec68d2ff477b)
 
