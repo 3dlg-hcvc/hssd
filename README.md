@@ -131,7 +131,7 @@ python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baseli
 
 ### Fine-tune on HM3D-semantics
 
-To fine-tune models pre-trained on HSSD or ProcTHOR:
+To fine-tune models pre-trained on HSSD or ProcTHOR on the HM3D-sem training dataset:
 
 - Update config file `habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml` to specify path to pre-trained weights:
 
@@ -142,11 +142,11 @@ To fine-tune models pre-trained on HSSD or ProcTHOR:
 - Finetune by running:
 
     ```
-    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type train
+    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml --run-type train
     ```
 
 - Evaluate fine-tuned models by running:
 
     ```
-    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
+    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
     ```
