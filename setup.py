@@ -40,7 +40,14 @@ if __name__ == "__main__":
     copy_cfg_files(src_folder, dest_folder)
 
     # copy zero-shot eval configs
-    src_folder = "configs/eval/zero-shot/*"
+    src_folder = "configs/hm3d_zero-shot_eval/*"
+    dest_folder = os.path.join(
+        args.hab_lab_path, "habitat-baselines/habitat_baselines/config/objectnav"
+    )
+    copy_cfg_files(src_folder, dest_folder)
+    
+    # copy HM3D-finetuning configs
+    src_folder = "configs/hm3d_finetuning/*"
     dest_folder = os.path.join(
         args.hab_lab_path, "habitat-baselines/habitat_baselines/config/objectnav"
     )

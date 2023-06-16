@@ -113,4 +113,24 @@ You can zero-shot evaluate models pre-trained above on HM3D-sem's val datasets a
 python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_eval_zeroshot_{hssd-hab, procthor-hab}_to_hm3d.yaml --run-type eval
 ```
 
-<!-- ## Citation -->
+### Fine-tune on HM3D-semantics
+
+To fine-tune models pre-trained on HSSD or ProcTHOR:
+
+- Update config file `habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml` to specify path to pre-trained weights:
+
+    ```
+    pretrained_weights: /path/to/weights_file
+    ```
+
+- Finetune by running:
+
+    ```
+    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type train
+    ```
+
+- Evaluate by running:
+
+    ```
+    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
+    ```
