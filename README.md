@@ -73,7 +73,7 @@ For your convenience, you can run the script below to conveniently move the nece
 python setup.py --hab-lab-path /path/to/habitat-lab
 ```
 
-## Commands
+## Training and evaluation commands
 
 Change directory to habitat-lab for successfuly running subsequent commands.
 
@@ -89,12 +89,28 @@ You can pre-train an ObjectNav agent on HSSD, ProcTHOR-hab, or HM3D, using any v
 python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type train
 ```
 
+You can find more information about training runs through checkpoints and tensorboard logs saved here: `/path/to/habitat-lab/data/training/objectnav`
+
 ### Evaluate
 
 You can evaluate trained models on val datasets as such:
 
 ```
 python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
+```
+
+This will run evaluation using all training checkpoints. Eval performance metrics can also be visualized through tensorboard logs saved in the path mentioned above. To also save videos of episodes of trained agents, you can add modify the `video_option` flag in the --exp-config file passed above as such:
+
+```
+video_option: ["disk"]
+```
+
+### Zero-shot evaluate on HM3D-semantics
+
+You can zero-shot evaluate models pre-trained above on HM3D-sem's val datasets as such:
+
+```
+python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_eval_zeroshot_{hssd-hab, procthor-hab}_to_hm3d.yaml --run-type eval
 ```
 
 <!-- ## Citation -->

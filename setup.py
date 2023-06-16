@@ -38,3 +38,10 @@ if __name__ == "__main__":
         args.hab_lab_path, "habitat-baselines/habitat_baselines/config/objectnav"
     )
     copy_cfg_files(src_folder, dest_folder)
+
+    # copy zero-shot eval configs
+    src_folder = "configs/eval/zero-shot/*"
+    dest_folder = os.path.join(
+        args.hab_lab_path, "habitat-baselines/habitat_baselines/config/objectnav"
+    )
+    copy_cfg_files(src_folder, dest_folder)
