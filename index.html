@@ -1,1 +1,473 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/hssd/logo192.png"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Habitat Synthetic Scenes Dataset (HSSD-200): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation"/><link rel="apple-touch-icon" href="/hssd/logo192.png"/><link rel="manifest" href="/hssd/manifest.json"/><title>HSSD</title><script defer="defer" src="/hssd/static/js/main.f7eb76e5.js"></script><link href="/hssd/static/css/main.4b25b621.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="HSSD, Scene Dataset, Embodied AI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Habitat Synthetic Scene Dataset</title>
+
+  <style>
+    .team-member {
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 100%;
+    }
+  </style>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo192.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Habitat Synthetic Scenes Dataset (HSSD): <br> An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://mukulkhanna.github.io">Mukul Khanna</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/SamMaoYS">Yongsen Mao</a><sup>2*</sup>,</span>
+            <span class="author-block">
+              <a href="https://jianghanxiao.github.io/">Hanxiao Jiang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.sanjayharesh.com/">Sanjay Haresh</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://cs.stanford.edu/~bps/">Brennan Schacklett</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://faculty.cc.gatech.edu/~dbatra/">Dhruv Batra</a><sup>1,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/alexander-clegg-68336839/">Alexander Clegg</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/ericu/">Eric Undersander</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://angelxuanchang.github.io/">Angel Chang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://msavva.github.io/">Manolis Savva</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Georgia Tech,</span>
+            <span class="author-block"><sup>2</sup>Simon Fraser University,</span>
+            <span class="author-block"><sup>3</sup>Stanford University,</span>
+            <span class="author-block"><sup>4</sup>FAIR, Meta AI</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Co-first authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- arXiv. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948" disabled="True"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/3dlg-hcvc/hssd/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/hssd"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <!-- <h2 class="subtitle has-text-centered">
+        A preview of our scene dataset.
+      </h2> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We contribute the Habitat Synthetic Scene Dataset, a dataset of 211 high-quality 3D scenes, and use it to test navigation agent generalization to realistic 3D environments. Our dataset represents real interiors and contains a diverse set of 18,656 models of real-world objects. 
+          </p>
+          <p>
+            We investigate the impact of synthetic 3D scene dataset scale and realism on the task of training embodied agents to find and navigate to objects (ObjectGoal navigation). By comparing to synthetic 3D scene datasets from prior work, we find that scale helps in generalization, but the benefits quickly saturate, making visual fidelity and correlation to real-world scenes more important. Our experiments show that agents trained on our smaller-scale dataset can match or outperform agents trained on much larger datasets. 
+          </p>
+          <p>
+            Surprisingly, we observe that agents trained on just 122 scenes from our dataset outperform agents trained on 10,000 scenes from the ProcTHOR-10K dataset in terms of zero-shot generalization in real-world scanned environments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Scene visuals. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Scene visuals</h2>
+        <img src="./static/images/scene_visuals_egocentric_collage.png"
+          alt="Scene visuals of HSSD."/>
+      </div>
+    </div>
+    <!--/ Scene visuals. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Scene visuals. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Object diversity</h2>
+        <img src="./static/images/object_diversity_HSSD.png"
+          alt="Object diversity of HSSD."/>
+      </div>
+    </div>
+    <!--/ Scene visuals. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Scene visuals. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">ObjectNav results</h2>
+          <p>
+            Our experiments show that the benefit of scene dataset scale saturates quickly, and scene realism and quality become the bottleneck for improved ObjectNav agent generalization to realistic scenes. 
+          </p><br>
+          <p>
+            Concretely, we find that agents trained on 122 scenes from HSSD outperform agents trained on two orders of magnitude more scenes from the ProcTHOR dataset. 
+          </p><br>
+        <img src="./static/images/objectnav_teaser.png"
+          width="70%"
+          alt="Object diversity of HSSD."/>
+        <br><br>
+        <p>Zero-shot ObjectNav performance on HM3DSem: for agents pretained on synthetic 3D scene datasets of different scale and quality.</p>
+      </div>
+    </div>
+    <!--/ Scene visuals. -->
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@article{khanna2023hssd,
+      author={{Khanna*}, Mukul and {Mao*}, Yongsen and Jiang, Hanxiao and Haresh, Sanjay and Schacklett, Brennan and Batra, Dhruv and Clegg, Alexander and Undersander, Eric and Chang, Angel X. and Savva, Manolis},
+      title={{Habitat Synthetic Scenes Dataset (HSSD-200): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation}},
+      journal={arXiv preprint},
+      year={2023}
+      }</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>
+            The research team members at SFU were supported by a Canada CIFAR AI Chair grant, a Canada Research Chair grant, an NSERC Discovery Grant and a research grant by Meta AI. Experiments at SFU were enabled by support from the Digital Research Alliance of Canada.
+          </p>
+          <p>
+            We thank Karmesh Yadav, Chris Paxton, Mrinal Kalakrishnan, Sonia Raychaudhuri, Qirui Wu, and Xiaohao Sun for useful discussions and feedback on early drafts of this paper. We also thank Ram Ramrakhya for useful discussions and help with the ProcTHOR experiments, and John Turner and Vladimír Vondruš for help with 3D asset compression.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content has-text-justified is-size-6">
+      <div class="columns is-multiline is-centered has-text-centered">
+        <h2 class="title is-3">Team</h2>
+      </div> 
+      <div class="columns is-multiline is-centered has-text-centered">
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/mukul.png" alt="Author 1">
+          <p><a href="https://mukulkhanna.github.io/">Mukul Khanna</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/yongsen.jpg">
+          <p><a href="https://github.com/SamMaoYS">Yongsen Mao</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/shawn.jpg">
+          <p><a href="https://jianghanxiao.github.io/">Hanxiao Jiang</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/sanjay.jpg">
+          <p><a href="https://www.sanjayharesh.com/">Sanjay Haresh</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/brennan.jpeg">
+          <p><a href="https://cs.stanford.edu/~bps/">Brennan Schacklett</a></p>
+        </div>
+      </div>
+      <div class="columns is-multiline is-centered has-text-centered">
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/dhruv.jpeg">
+          <p><a href="https://faculty.cc.gatech.edu/~dbatra/">Dhruv Batra</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/alexander.jpeg">
+          <p><a href="https://www.linkedin.com/in/alexander-clegg-68336839/">Alexander Clegg</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/eric.jpeg">
+          <p><a href="https://www.linkedin.com/in/ericu/">Eric Undersander</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/angel.jpg">
+          <p><a href="https://angelxuanchang.github.io/">Angel Xuan Chang</a></p>
+        </div>
+        <div class="column is-2-desktop is-4-tablet team-member">
+          <img src="./static/images/authors/manolis.jpeg">
+          <p><a href="https://msavva.github.io/">Manolis Savva</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
