@@ -1,6 +1,9 @@
 HSSD: Habitat Synthetic Scene Dataset
 ==================================
 
+[![arXiv](https://img.shields.io/badge/cs.cv-arXiv%3A1912.11463-42ba94.svg)](https://arxiv.org/abs/2306.11290)
+
+
 This repository serves as a guide for training and evaluating ObjectNav agents in HSSD, AI2THOR, and HM3D scene datasets using Habitat, and reproducing experiments provided in the HSSD paper.
 
 `Habitat Synthetic Scenes Dataset (HSSD): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation`
@@ -150,3 +153,19 @@ To fine-tune models pre-trained on HSSD or ProcTHOR on the HM3D-sem training dat
     ```
     python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
     ```
+
+## Citing HSSD
+
+If you use our dataset or find our work useful, please consider citing:
+
+```
+@article{khanna2023hssd,
+    author={{Khanna*}, Mukul and {Mao*}, Yongsen and Jiang, Hanxiao and Haresh, Sanjay and Shacklett, Brennan and Batra, Dhruv and Clegg, Alexander and Undersander, Eric and Chang, Angel X. and Savva, Manolis},
+    title={{Habitat Synthetic Scenes Dataset (HSSD-200): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation}},
+    journal={arXiv preprint},
+    year={2023},
+    eprint={2306.11290},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+```
