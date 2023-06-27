@@ -8,7 +8,7 @@ This repository serves as a guide for training and evaluating ObjectNav agents i
 
 `Habitat Synthetic Scenes Dataset (HSSD): An Analysis of 3D Scene Scale and Realism Tradeoffs for ObjectGoal Navigation`
 
-[hssd-teaser-small.webm](https://github.com/3dlg-hcvc/hssd/assets/24846546/1e773001-9f0c-4b8d-a508-ec68d2ff477b)
+[hssd-teaser-small.webm](assets/videos/hssd-teaser-small.webm)
 
 ## Table of contents
 
