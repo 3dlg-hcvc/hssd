@@ -46,7 +46,7 @@ Note: Even though the HSSD scene dataset is compatible with the latest habitat-s
 
 ### HSSD:
 
-HSSD has been hosted on HuggingFace at [huggingface.co/hssd/hssd-hab](https://huggingface.co/hssd/hssd-hab). Here, you can preview the dataset and find information about the folder structure and instructions on getting started.
+HSSD has been hosted on HuggingFace at [huggingface.co/datasets/hssd/hssd-hab](https://huggingface.co/datasets/hssd/hssd-hab). Here, you can preview the dataset and find information about the folder structure and instructions on getting started.
 
 For conveniently running subsequent training and evaluation experiments, you can clone the dataset to the following path in your `habitat-lab` installation:
 
