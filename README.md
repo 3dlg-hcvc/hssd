@@ -36,11 +36,24 @@ https://github.com/3dlg-hcvc/hssd/assets/24846546/879d2a36-870f-4ea9-b7cd-f0a900
 
 To load HSSD and other scene datasets in simulation and train and evlaute embodied agents in them, you will need to install:
 
-- [Habitat-lab (`v0.2.3_hssd` branch)](https://github.com/facebookresearch/habitat-lab/tree/v0.2.3_hssd)
-- [Habitat-sim (`v0.2.3_hssd` branch)](https://github.com/facebookresearch/habitat-sim/tree/v0.2.3_hssd): build from source.
-- [CLIP](https://github.com/openai/CLIP) (`pip install git+https://github.com/openai/CLIP.git@40f5484c1c74edd83cb9cf687c6ab92b28d8b656`)
+1. [Habitat-sim (`v0.2.5`)](https://github.com/facebookresearch/habitat-sim/tree/v0.2.5)
 
-Note: Even though the HSSD scene dataset is compatible with the latest habitat-sim and habitat-lab versions, the results in the paper were reported using `v0.2.3_hssd` branch of both habitat libraries.
+```
+conda install habitat-sim=0.2.5 -c conda-forge -c aihabitat
+```
+
+2. [Habitat-lab (`v0.2.5`)](https://github.com/facebookresearch/habitat-lab/tree/v0.2.5)
+
+```
+git clone --branch v0.2.5 https://github.com/facebookresearch/habitat-lab.git
+cd habitat-lab
+pip install -e habitat-lab  # install habitat_lab
+pip install -e habitat-baselines  # install habitat_lab
+```
+
+<!-- - [CLIP](https://github.com/openai/CLIP) (`pip install git+https://github.com/openai/CLIP.git@40f5484c1c74edd83cb9cf687c6ab92b28d8b656`) -->
+
+Note: Even though the HSSD scene dataset is compatible with the latest habitat-sim and habitat-lab versions, the results in the paper were reported using `v0.2.5` branch of both habitat libraries.
 
 ## Scene datasets
 
@@ -76,9 +89,12 @@ To download episode datasets for HSSD, ProcTHOR-HAB, and HM3D-semantics, you wil
 
 | Task | Scenes | Link | Extract path | Config to use                                                                                                          | Archive size |
 | --- | --- | --- | --- |------------------------------------------------------------------------------------------------------------------------| --- |
-| [Object goal navigation](https://arxiv.org/abs/2006.13171) | HSSD-hab | [objectnav_hssd-hab_v0.2.3.zip](https://www.dropbox.com/s/26ribfiup5249b8/objectnav_hssd_v0.2.3.zip) | `data/datasets/objectnav/hssd-hab` | [`datasets/objectnav/hssd-hab.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hssd-hab.yaml)                                    | 206 MB |
-| [Object goal navigation](https://arxiv.org/abs/2006.13171) | ProcTHOR-HAB | [objectnav_procthor-hab.zip](https://www.dropbox.com/s/mdfpevn1srr37cr/objectnav_procthor-hab.zip) | `data/datasets/objectnav/procthor-hab` | [`datasets/objectnav/procthor-hab.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/procthor-hab.yaml)                                    | 755 MB |
-| [Object goal navigation](https://arxiv.org/abs/2006.13171) | HM3DSem-v0.2 | [objectnav_hm3d_v2_locobot_multifloor.zip](https://dl.fbaipublicfiles.com/habitat/data/datasets/objectnav/hm3d/v2/objectnav_hm3d_v2_locobot_multifloor.zip) | `data/datasets/objectnav/hm3d/v2/` | [`datasets/objectnav/hm3d_v2.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hm3d_v2.yaml)                                    | 245 MB |
+
+| [ObjectNav](https://arxiv.org/abs/2006.13171) | HSSD-hab | [objectnav_hssd-hab_v0.2.5.zip](https://www.dropbox.com/scl/fi/n5m00eoydfedi0de1nh34/objectnav_hssd-hab_v0.2.5.zip) | `data/datasets/objectnav/hssd-hab` | [`datasets/objectnav/hssd-hab.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hssd-hab.yaml)                                    | 24 MB |
+
+| [ObjectNav](https://arxiv.org/abs/2006.13171) | ProcTHOR-hab | [objectnav_procthor-hab.zip](https://www.dropbox.com/scl/fi/noizniosf3sjaolq54a6v/objectnav_procthor-hab_v0.2.5.zip) | `data/datasets/objectnav/procthor-hab` | [`datasets/objectnav/procthor-hab.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/procthor-hab.yaml)                                    | 755 MB |
+
+| [ObjectNav](https://arxiv.org/abs/2006.13171) | HM3DSem-v0.2 | [objectnav_hm3d_v2_locobot_multifloor.zip](https://dl.fbaipublicfiles.com/habitat/data/datasets/objectnav/hm3d/v2/objectnav_hm3d_v2_locobot_multifloor.zip) | `data/datasets/objectnav/hm3d/v2/` | [`datasets/objectnav/hm3d_v2.yaml`](habitat-lab/habitat/config/habitat/dataset/objectnav/hm3d_v2.yaml)                                    | 245 MB |
 
 
 ## Training and evaluation setup
@@ -106,7 +122,7 @@ cd /path/to/habitat-lab
 You can pre-train an ObjectNav agent on HSSD, ProcTHOR-hab, or HM3D, using any variant of the following command:
 
 ```
-python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type train
+python -u -m habitat_baselines.run --config-name=objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml
 ```
 
 You can find more information about training runs through checkpoints and tensorboard logs saved here: `/path/to/habitat-lab/data/training/objectnav`.
@@ -118,7 +134,7 @@ Note: The above script will run training on 1 GPU. However, all the training exp
 You can evaluate trained models on val datasets as such:
 
 ```
-python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
+python -u -m habitat_baselines.run --config-name=objectnav/hssd-200_ver_clip_{hssd-hab, procthor-hab, hm3d}.yaml habitat_baselines.evaluate=True
 ```
 
 This will run evaluation using all training checkpoints. Eval performance metrics can also be visualized through tensorboard logs saved in the path mentioned above. To also save videos of episodes of trained agents, you can add modify the `video_option` flag in the --exp-config file passed above as such:
@@ -132,7 +148,7 @@ video_option: ["disk"]
 You can zero-shot evaluate models pre-trained above on HM3D-sem's val datasets as such:
 
 ```
-python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_eval_zeroshot_{hssd-hab, procthor-hab}_to_hm3d.yaml --run-type eval
+python -u -m habitat_baselines.run --config-name=objectnav/hssd-200_eval_zeroshot_{hssd-hab, procthor-hab}_to_hm3d.yaml habitat_baselines.evaluate=True
 ```
 
 ### Fine-tune on HM3D-semantics
@@ -148,13 +164,13 @@ To fine-tune models pre-trained on HSSD or ProcTHOR on the HM3D-sem training dat
 - Finetune by running:
 
     ```
-    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml --run-type train
+    python -u -m habitat_baselines.run --config-name=objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml
     ```
 
 - Evaluate fine-tuned models by running:
 
     ```
-    python -u habitat-baselines/habitat_baselines/run.py --exp-config habitat-baselines/habitat_baselines/config/objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml --run-type eval habitat_baselines.load_resume_state_config=False
+    python -u -m habitat_baselines.run --config-name=objectnav/hssd-200_hm3d_finetune_ver_clip_{hssd-hab, procthor-hab}.yaml habitat_baselines.evaluate=True habitat_baselines.load_resume_state_config=False
     ```
 
 ## Citing HSSD

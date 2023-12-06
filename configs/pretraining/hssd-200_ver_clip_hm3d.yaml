@@ -16,7 +16,7 @@ habitat_baselines:
   video_dir: "data/training/objectnav/hm3d/video_dir"
   test_episode_count: -1
   eval_ckpt_path_dir: "data/training/objectnav/hm3d/checkpoints/"
-  num_environments: 32
+  num_environments: 24
   checkpoint_folder: "data/training/objectnav/hm3d/checkpoints"
   trainer_name: "ver"
   num_updates: 270000

@@ -16,7 +16,7 @@ habitat_baselines:
   video_dir: "data/training/objectnav/procthor-hab_hm3d_finetuned/video_dir"
   test_episode_count: -1
   eval_ckpt_path_dir: "data/training/objectnav/procthor-hab_hm3d_finetuned/checkpoints/"
-  num_environments: 32
+  num_environments: 24
   checkpoint_folder: "data/training/objectnav/procthor-hab_hm3d_finetuned/checkpoints"
   trainer_name: "ver"
   num_updates: 270000

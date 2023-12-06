@@ -14,7 +14,6 @@ habitat:
   simulator:
     scene_dataset: "data/scene_datasets/ai2thor-hab/ai2thor-hab/ai2thor-hab.scene_dataset_config.json"
     turn_angle: 30
-    action_space_config: "v1"
     agents:
       main_agent:
         sim_sensors:
