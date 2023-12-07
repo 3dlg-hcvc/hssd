@@ -36,13 +36,13 @@ https://github.com/3dlg-hcvc/hssd/assets/24846546/879d2a36-870f-4ea9-b7cd-f0a900
 
 To load HSSD and other scene datasets in simulation and train and evlaute embodied agents in them, you will need to install:
 
-1. [Habitat-sim (`v0.2.5`)](https://github.com/facebookresearch/habitat-sim/tree/v0.2.5)
+1. [Habitat-sim](https://github.com/facebookresearch/habitat-sim/tree/v0.2.5) (`v0.2.5`)
 
 ```
 conda install habitat-sim=0.2.5 -c conda-forge -c aihabitat
 ```
 
-2. [Habitat-lab (`v0.2.5`)](https://github.com/facebookresearch/habitat-lab/tree/v0.2.5)
+2. [Habitat-lab](https://github.com/facebookresearch/habitat-lab/tree/v0.2.5) (`v0.2.5`)
 
 ```
 git clone --branch v0.2.5 https://github.com/facebookresearch/habitat-lab.git
