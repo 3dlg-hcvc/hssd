@@ -142,11 +142,13 @@ video_option: ["disk"]
 
 ### Zero-shot evaluate on HM3D-semantics
 
-You can zero-shot evaluate models pre-trained above on HM3D-sem's val datasets as such:
+To zero-shot evaluate models pre-trained above on HM3D-sem's val datasets, update the `eval_ckpt_path_dir` variable in the config files passed in the command below:
 
 ```
 python -u -m habitat_baselines.run --config-name=objectnav/hssd-200_eval_zeroshot_{hssd-hab, procthor-hab}_to_hm3d.yaml habitat_baselines.evaluate=True
 ```
+
+You can download weights for an HSSD-pretrained policy [here](https://www.dropbox.com/scl/fi/06ft32wwj7r4kzgy2g1if/hssd_pretrained_best_on_hm3d_ckpt.pth).
 
 ### Fine-tune on HM3D-semantics
 
